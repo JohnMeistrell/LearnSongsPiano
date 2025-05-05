@@ -1,0 +1,304 @@
+<html lang="en">
+<head>
+
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+    .collapse.collapsed:before  {  display: none; }
+    .collapse:before            {  display: none; }
+        .customClassForDropDown {  height: 50vh; overflow-y: auto; }
+    </style>
+
+    <style>
+        .parent          { position: relative;        }
+        .child_one       { background-color: black; width: 30vw;  height: 40vh;        }
+        .child_one:hover { position: absolute; cursor: pointer;    }
+        .child_two       { background-color: bisque; position: absolute; cursor: pointer; }
+        .car1            { position: absolute; top: 300px; left: 300px; border: 1px green solid;  }
+    </style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href= "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"   rel="stylesheet"   integrity= "sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"     crossorigin="anonymous"> 
+
+    <link rel="stylesheet" href="piano.css"/>
+
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
+    <script src="ChordsNotesJSON.txt"> </script>
+
+</head>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------ -->
+<! ### WEB PAGE ###                                                                                                                 -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------ -->
+
+<body style="background-color:#a56ca7">
+
+    <div class="piano">
+    <div class="piano-container">
+    <div style="position: absolute; background-color: white; top: 0; left: 0;">
+          <div class="ppp-white"><p class="ppp-all ppp-bot piano-C3" style="visibility: visible;  text-align: center;">C3</p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-D3" style="visibility: visible;  text-align: center;">D </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-E3" style="visibility: visible;  text-align: center;">E </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-F3" style="visibility: visible;  text-align: center;">F </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-G3" style="visibility: visible;  text-align: center;">G </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-A3" style="visibility: visible;  text-align: center;">A </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-B3" style="visibility: visible;  text-align: center;">B </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-C4" style="visibility: visible;  text-align: center;">C4</p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-D4" style="visibility: visible;  text-align: center;">D </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-E4" style="visibility: visible;  text-align: center;">E </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-F4" style="visibility: visible;  text-align: center;">F </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-G4" style="visibility: visible;  text-align: center;">G </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-A4" style="visibility: visible;  text-align: center;">A </p></div><!--
+       --><div class="ppp-white"><p class="ppp-all ppp-bot piano-B4" style="visibility: visible;  text-align: center;">B </p></div>
+
+
+       <div class="ppp-white">
+       <h3  class="ppp-white" style="width: 80px; font-weight: bold; text-align: center; ">Am7
+
+       <p  style="flex-wrap: nowrap; text-align: center; font-weight: normal; font-size: 8px;">
+          <label id="idScroll" style="float: right;; width: 40px"></label>
+          <label id="idRow"    style="float: right;; width: 40px"></label>
+          <label id="idCol"    style="width: 40px"></label>
+          <label id="idTime"   style="width: 40px"></label>
+          <label id="idWord"   style="width: 160px"></label>
+       </p>
+       </h3>
+
+</div>
+
+
+
+
+
+       
+       <div class="child_two">
+          <button onclick="startMe();" >START</button>
+          <button onclick="buildMe();" >BUILD</button>
+          <button onclick="playMe();"  >PLAY onmove clientXY</button>
+
+          <input type="text" id="Y" style="width: 40px">
+          <input type="text" id="X" style="width: 40px">
+
+          <div id="wrapper" style="padding:5px;">  </div>
+       </div>
+       <div class="inner1" style="background-color:#fadadd;        padding:0px; margin:0px; border:5px solid #000000; maxHeight = "200px"; ">
+           <h2  id="titleP"  class="        container-fluid text-center"    style="                                 padding:0px; margin:0px; background-color:#fadadd;" >Great Balls Fire </h2>
+           <div id="scrolP"  class="scrolPc inner container-fluid pre-scrollable" style="min-height: 390px;               padding:0px; margin:0px" onclick="getLocation(this)" onmousemove="coordinate(event)" >
+           <img id="imageP"  class="        container-fluid"                style="min-height: 100px; height: 100%; width: 100%; object-fit: contain; padding:0px; margin:0px" src="images/GballsFire1.jpg" alt="" > 
+           <img id="imageP2" class="        container-fluid"                style="min-height: 100px; height: 100%; width: 100%; object-fit: contain; padding:0px; margin:0px" src="images/GballsFire2.jpg" alt="" > 
+           <img id="car"     class="car1" src="images/21.jpg"  style="height: 50px; width: 80px ; border-radius: 50%;" >
+           </div>
+ 
+       </div>
+          <div id="log2" class="log2">ADD this</div>
+          <p   class="log">Mouse over this section to view coordinates</p>
+
+    </div>
+    </div>
+
+    <div class="piano">
+    <div class="piano-container" 
+          <div style="position: absolute;">
+          <div class="ppp-none"></div><!--
+       --><div class="ppp-black"><p class="ppp-all ppp-bot piano-Cs3" style="visibility: visible; font-style: italic; "><small>C#</small></p></div><!--
+       --><div class="ppp-half"></div><!--
+       --><div class="ppp-black"><p class="ppp-all ppp-bot piano-Ds3" style="visibility: visible; font-style: italic; "><small>D#</small></p></div><!--
+       --><div class="ppp-none"></div><!--
+       --><div class="ppp-half"></div><!--
+       --><div class="ppp-black"><p class="ppp-all ppp-bot piano-Es3" style="visibility: visible; font-style: italic; "><small>E#</small></p></div><!--
+       --><div class="ppp-half"></div><!--
+       --><div class="ppp-black"><p class="ppp-all ppp-bot piano-Fs3" style="visibility: visible; font-style: italic; "><small>F#</small></p></div><!--
+       --><div class="ppp-half"></div><!--
+       --><div class="ppp-black"><p class="ppp-all ppp-bot piano-Gs3" style="visibility: visible; font-style: italic; "><small>G#</small></p></div><!--
+       --><div class="ppp-none"></div><!--
+       --><div class="ppp-half"></div><!--
+       --><div class="ppp-black"><p class="ppp-all ppp-bot piano-Cs4" style="visibility: visible; font-style: italic; "><small>C#</small></p></div><!--
+       --><div class="ppp-half"></div><!--
+       --><div class="ppp-black"><p class="ppp-all ppp-bot piano-Ds4" style="visibility: visible; font-style: italic; "><small>D#</small></p></div><!--
+       --><div class="ppp-none"></div><!--
+       --><div class="ppp-half"></div><!--
+       --><div class="ppp-black"><p class="ppp-all ppp-bot piano-Es4" style="visibility: visible; font-style: italic; "><small>E#</small></p></div><!--
+       --><div class="ppp-half"></div><!--
+       --><div class="ppp-black"><p class="ppp-all ppp-bot piano-Fs4" style="visibility: visible; font-style: italic; "><small>F#</small></p></div><!--
+       --><div class="ppp-half"></div><!--
+       --><div class="ppp-black"><p class="ppp-all ppp-bot piano-Gs4" style="visibility: visible; font-style: italic; "><small>G#</small></p></div><!--
+       --></div>
+    </div>
+    </div>
+
+<script> 
+
+  function coordinate(event) {  /* ---------- onmousemove="coordinate(event) PLAY */
+
+       let x = event.clientX;
+       let y = event.clientY;
+       document.getElementById("X").value = x;
+       document.getElementById("Y").value = y;
+  }
+</script>
+
+<script type="text/javascript">
+
+  var startTime, endTime;
+
+  function startMe() {
+    startTime = new Date();
+  };
+
+  
+  function getLocation(evt) {  /* ---------- SCROLL IMAGE onclick="getLocation(this) */
+
+     const x  = document.getElementById("X").value;
+     const y  = document.getElementById("Y").value;
+
+     const e      = document.getElementById("scrolP");
+     var scrolID  = document.getElementById("scrolP");
+
+     var ss1 = e.scrollLeft;  /* LeftRigh THIS WORKS */
+     var ss2 = e.scrollTop; /* UpDown */
+     console.log("ss e.scrollLeft/top: " + ss1 + " " + ss2 );
+
+
+     endTime = new Date();
+     var timeDiff = endTime - startTime; //in ms
+     timeDiff /= 1000; // strip the ms
+     // get seconds 
+     var seconds = Math.round(timeDiff);
+     console.log(seconds + " seconds");
+
+     bTime[onChord] = seconds;
+     bSong[onChord] = ss2 + " - " + x + " - " + y ; /* Location of chord on image. nScrollDown nRow nCol Used by BuildMe() and playMe() */
+     onChord += 1;
+
+  }
+</script>
+
+<script type="text/javascript">
+
+  function buildMe() {  /* ---------- */
+ 
+     console.log("bSong: " + bSong);
+     console.log("bTime: " + bTime);
+
+     codeBlock = "";
+     aSong.forEach(function(element, index, array) {
+        var NotesForChord =  Chord2Notes(element);
+        codeBlock += "<p>" + element + " Notes: " +  NotesForChord + bSong[index] + " </p>";
+
+        var msg1 = element + " Notes: " +  NotesForChord;
+
+     });
+     console.log(codeBlock);
+
+     document.getElementById("log2").innerHTML = codeBlock;
+  }
+
+  function playNext(name) {  /* ---------- */
+
+     const aItemLocInfo = name.split(" - ");
+
+     console.log("name: " + name );
+
+     nTime           = aItemLocInfo[0];
+     Chord           = aItemLocInfo[1];
+     NotesForChord   = aItemLocInfo[2];
+     nScrollDown     = aItemLocInfo[3];
+     nRow            = aItemLocInfo[4];
+     nCol            = aItemLocInfo[5];
+     secTime         = aItemLocInfo[6]; 
+     sWord           = aItemLocInfo[7];
+
+     var esMap  = document.getElementById("scrolP");
+     esMap.scrollTop  = nScrollDown;
+
+     var esCar  = document.getElementById("car");
+     esCar.style.left = nRow;
+     esCar.style.top  = nCol;
+
+     document.getElementById("idScroll").innerHTML = "S:" + nScrollDown;
+     document.getElementById("idRow").innerHTML    = "R:" + nRow;
+     document.getElementById("idCol").innerHTML    = "C:" + nCol;
+     document.getElementById("idTime").innerHTML   = "T:" + secTime;
+     document.getElementById("idWord").innerHTML   = "W:" + sWord;
+
+     document.querySelectorAll('.ppp-bot').forEach(function(el) {
+       el.style.visibility = 'hidden';
+     });
+
+
+     const aaa = NotesForChord.split("|");  /* G,B,D,    ,|,G,B,D,    ,|, */
+     const bbb = aaa[0].split(",");         /* G,B,D,, */
+
+
+     for (const NoteShow of bbb) {
+        console.log(NoteShow);
+
+        let ccc = NoteShow.replace("#", "s");
+
+        document.querySelectorAll('.piano-' + ccc + '3').forEach(function(el) {
+          el.style.visibility = 'visible';
+        });
+        document.querySelectorAll('.piano-' + ccc + '4').forEach(function(el) {
+          el.style.visibility = 'visible';
+        });
+
+     };
+
+
+  }
+
+  function playMe() {   /* ---------- */
+
+     nTime = 2000;
+
+     document.querySelectorAll('.ppp-bot').forEach(function(el) {
+       el.style.visibility = 'hidden';
+     });
+
+     codeBlock = "";
+     aSong.forEach(function(element, index, array) {
+
+        var njItem = bSong[index];
+
+        var njTime = bTime[index];
+        var mmTime = njTime * 1000;
+
+        var njWord = cWord[index];
+
+        var NotesForChord =  Chord2Notes(element);
+        codeBlock += "<p>" + element + " Notes: " +  NotesForChord + " At: " + njItem + " - " + njTime + " - " + njWord + " </p>";
+
+        var msg1 = nTime + " - " + element + " - " +  NotesForChord + " - " + njItem  + " - " + njTime + " - " + njWord  ;
+
+        setTimeout(playNext, mmTime, msg1); // (after 2 seconds)
+        nTime += 2000;
+
+     });
+     console.log(codeBlock);
+
+  }
+</script>
+
+<script type="text/javascript">
+
+   function Chord2Notes(ChordFind) {  /* ---------- */
+
+      const  NotesForThisCord = ChordsNotes.get(ChordFind);
+      return NotesForThisCord;
+   }
+</script>
+
+<script type="text/javascript">
+
+  function showAll(ShowAllForChord) {   /* ---------- */
+
+     $(ShowAllForChord).addClass("show");
+     console.log("Show ALL: " + ShowAllForChord);
+  }
+
+</script>
+
+</body>
+</html>
