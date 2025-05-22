@@ -55,14 +55,13 @@
 
 
        <div class="ppp-white">
-       <h3  class="ppp-white" style="width: 80px; font-weight: bold; text-align: center; ">Am7
+       <h3  class="ppp-white" style="width: 200px; font-weight: bold; text-align: center; "><label id="idChord">Am7</label>
 
-       <p  style="flex-wrap: nowrap; text-align: center; font-weight: normal; font-size: 8px;">
-          <label id="idScroll" style="float: right;; width: 40px"></label>
-          <label id="idRow"    style="float: right;; width: 40px"></label>
-          <label id="idCol"    style="width: 40px"></label>
-          <label id="idTime"   style="width: 40px"></label>
-          <label id="idWord"   style="width: 160px"></label>
+       <p  style="flex-wrap: nowrap; text-align: center; font-weight: normal; font-size: 12px;">
+          <label id="idScroll" ></label>
+          <label id="idRow"    ></label>
+          <label id="idTime"   ></label><br>
+          <label id="idWord" style=" font-size: 16px;" ></label>
        </p>
        </h3>
 
@@ -74,7 +73,7 @@
 
        
        <div class="child_two">
-          <button onclick="startMe();" >START</button>
+          <button onclick="startMe();" >TIME</button>
           <button onclick="buildMe();" >BUILD</button>
           <button onclick="playMe();"  >PLAY onmove clientXY</button>
 
@@ -86,14 +85,22 @@
        <div class="inner1" style="background-color:#fadadd;        padding:0px; margin:0px; border:5px solid #000000; maxHeight = "200px"; ">
            <h2  id="titleP"  class="        container-fluid text-center"    style="                                 padding:0px; margin:0px; background-color:#fadadd;" >Great Balls Fire </h2>
            <div id="scrolP"  class="scrolPc inner container-fluid pre-scrollable" style="min-height: 390px;               padding:0px; margin:0px" onclick="getLocation(this)" onmousemove="coordinate(event)" >
-           <img id="imageP"  class="        container-fluid"                style="min-height: 100px; height: 100%; width: 100%; object-fit: contain; padding:0px; margin:0px" src="images/GballsFire1.jpg" alt="" > 
-           <img id="imageP2" class="        container-fluid"                style="min-height: 100px; height: 100%; width: 100%; object-fit: contain; padding:0px; margin:0px" src="images/GballsFire2.jpg" alt="" > 
+           <img id="imageP1" class="        container-fluid"                style="min-height: 100px; height: 100%; width: 100%; object-fit: contain; padding:0px; margin:0px" src="images/" + selectSong + "1.jpg" alt="" > 
+           <img id="imageP2" class="        container-fluid"                style="min-height: 100px; height: 100%; width: 100%; object-fit: contain; padding:0px; margin:0px" src="images/" + selectSong + "2.jpg" alt="" > 
            <img id="car"     class="car1" src="images/21.jpg"  style="height: 50px; width: 80px ; border-radius: 50%;" >
            </div>
  
        </div>
           <div id="log2" class="log2">ADD this</div>
           <p   class="log">Mouse over this section to view coordinates</p>
+
+
+    <div id="scrolP"  class="scrolPc inner container-fluid pre-scrollable" style="min-height: 100px; height: 120px;   padding:0px; margin:0px"  >
+    <div class="row mr-auto container-fluid collapseX ccX multi-collapse-Cart .multi-collapse-Cart show" >
+          <ol id="wrapper3" class="list-group list-group-numbered">
+          </ol> 
+    </div>
+    </div>
 
     </div>
     </div>
@@ -141,13 +148,75 @@
 
 <script type="text/javascript">
 
+var imageP1 = "images/" + selectSong + "1.jpg";
+var imageP2 = "images/" + selectSong + "2.jpg";
+
+console.log( imageP1 + " " + imageP2 );
+
+document.getElementById("imageP1").src = imageP1 ;
+document.getElementById("imageP2").src = imageP2 ;
+
+
+
+
+
+  var codeBlock2 = '';
+  var CartA  = '<li class="list-group-item" onclick="showIt(this)">';
+  var CartD = '<span class="ms-2">'; 
+  var CartE = 'bbbbbb' ;
+  var CartF = '</span></li>';
+
+  var CartItem =  document.getElementById("wrapper3").innerHTML;
+
+     aSong.forEach(function(element, index, array) {
+
+        var iii1 = "'" + index + "'"; 
+
+        CartA  = '<li class="list-group-item" onclick="showIt(this,' + iii1 + ')">';
+
+        /*CartA  = '<li class="list-group-item" onclick="showIt(this,'''2''')">';
+*/
+        var njItem = dPlace[index];
+
+        var njTime = bTime[index];
+        var mmTime = njTime * 1000;
+
+        var njWord = cWord[index];
+
+        var eee = element.trim();
+
+        console.log(eee);
+
+        var  NotesForChord = ChordsNotes.get(eee);
+
+        codeBlock2 = element + " Notes: " +  NotesForChord + " At: " + njItem + " - " + njTime + " - " + njWord;
+
+        CartItem += CartA;
+        CartItem += CartD;
+        CartItem += codeBlock2;
+        CartItem += CartF;
+     });
+     document.getElementById("wrapper3").innerHTML = CartItem;
+
+
+
+
+
+
+
   var startTime, endTime;
 
   function startMe() {
     startTime = new Date();
   };
 
-  
+
+  function showIt(e,iii) {
+    window.alert(iii + " " + e.innerHTML);
+  };
+
+
+
   function getLocation(evt) {  /* ---------- SCROLL IMAGE onclick="getLocation(this) */
 
      const x  = document.getElementById("X").value;
@@ -169,7 +238,7 @@
      console.log(seconds + " seconds");
 
      bTime[onChord] = seconds;
-     bSong[onChord] = ss2 + " - " + x + " - " + y ; /* Location of chord on image. nScrollDown nRow nCol Used by BuildMe() and playMe() */
+     dPlace[onChord] = ss2 + " - " + x + " - " + y ; /* Location of chord on image. nScrollDown nRow nCol Used by BuildMe() and playMe() */
      onChord += 1;
 
   }
@@ -179,13 +248,13 @@
 
   function buildMe() {  /* ---------- */
  
-     console.log("bSong: " + bSong);
+     console.log("dPlace: " + dPlace);
      console.log("bTime: " + bTime);
 
      codeBlock = "";
      aSong.forEach(function(element, index, array) {
         var NotesForChord =  Chord2Notes(element);
-        codeBlock += "<p>" + element + " Notes: " +  NotesForChord + bSong[index] + " </p>";
+        codeBlock += "<p>" + element + " Notes: " +  NotesForChord + dPlace[index] + " </p>";
 
         var msg1 = element + " Notes: " +  NotesForChord;
 
@@ -217,11 +286,14 @@
      esCar.style.left = nRow;
      esCar.style.top  = nCol;
 
+     document.getElementById("idChord").textContent    = Chord; 
+     document.getElementById("titleP").textContent    = songTitle;
+
+
      document.getElementById("idScroll").innerHTML = "S:" + nScrollDown;
-     document.getElementById("idRow").innerHTML    = "R:" + nRow;
-     document.getElementById("idCol").innerHTML    = "C:" + nCol;
+     document.getElementById("idRow").innerHTML    = "RC:" + nRow + " " + nCol;
      document.getElementById("idTime").innerHTML   = "T:" + secTime;
-     document.getElementById("idWord").innerHTML   = "W:" + sWord;
+     document.getElementById("idWord").innerHTML   = sWord;
 
      document.querySelectorAll('.ppp-bot').forEach(function(el) {
        el.style.visibility = 'hidden';
@@ -260,7 +332,7 @@
      codeBlock = "";
      aSong.forEach(function(element, index, array) {
 
-        var njItem = bSong[index];
+        var njItem = dPlace[index];
 
         var njTime = bTime[index];
         var mmTime = njTime * 1000;
@@ -287,6 +359,7 @@
 
       const  NotesForThisCord = ChordsNotes.get(ChordFind);
       return NotesForThisCord;
+
    }
 </script>
 

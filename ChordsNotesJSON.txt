@@ -1,13 +1,33 @@
+var selectSong = 'GballsFire';   var songTitle = 'Great Balls Fire';
+var selectSong = 'HeAintHeavy';  var songTitle = "He Ain't Heavy";
+
 var onChord = Number('0');
-const aSong1 = [ "C" , "A" , "Am" , "Am7" ];
 
-const aSong =  [ "G" ,           "C7" ,           "D7" ,          "G" ,           "C7" ,           "G7" ,             "C7" ,             "G" ,             "C7" ,            "G" ,              "C7" ,            "D7" ,             "D7" ,            "G" ,              "C7" ,            "D7" ,             "C7" ] ;
+const songsDetailList = new Map([
 
-const bSong =  [ '0 - 39 - 200', '0 - 208 - 190', '0 - 40 - 303', '0 - 38 - 407', '0 - 457 - 500', '341 - 146 - 292', '341 - 388 - 296', '341 - 45 - 377', '341 - 48 - 453', '341 - 260 - 447', '683 - 50 - 170', '683 - 229 - 170', '683 - 56 - 352', '683 - 338 - 349', '683 - 50 - 487', '683 - 487 - 484', '998 - 46 - 315' ];
+[ "GballsFire-Chords" , [ "G" ,           "C7" ,           "D7" ,          "G" ,           "C7" ,           "G7" ,             "C7" ,             "G" ,             "C7" ,            "G" ,              "C7" ,            "D7" ,             "D7" ,            "G" ,              "C7" ,            "D7" ,             "C7" ] ] ,
+[ "GballsFire-Place"  , [ '0 - 39 - 200', '0 - 208 - 190', '0 - 40 - 303', '0 - 38 - 407', '0 - 457 - 500', '341 - 146 - 292', '341 - 388 - 296', '341 - 45 - 377', '341 - 48 - 453', '341 - 260 - 447', '683 - 50 - 170', '683 - 229 - 170', '683 - 56 - 352', '683 - 338 - 349', '683 - 50 - 487', '683 - 487 - 484', '998 - 46 - 315' ] ] ,
+[ "GballsFire-Word"   , [ "You shake my"  ,"nerves and u" ,"man insane  "  ," Goodness gr","You came along","I changed my min","this love is fine","Goodness grace","Kiss me baby Oh","yo! It feels goo","Hold me baby"    ,"I want to love" ,"mine mine mine", "I chew my nails ","Im real nervous","Oh baby your dr ","crazy Goodness"] ] ,
+[ "GballsFire-Time"   , [  3,              6,               8,              11,             17,              21,                23,                25,               28,               31,                34,               37,                45,               46,                50,               52,                55 ] ] ,
 
-const bTime =  [  3,              6,               8,              11,             17,              21,                23,                25,               28,               31,                34,               37,                45,               46,                50,               52,                55 ];
+[ "HeAintHeavy-Chords", [ "G"               , "D"               , "C"               , "D7"                     , "G"               , "D"               , "C"               , "Am7"             , "D"               , "E"               , "F"                  , "Am7"             , "Am7-D-D7"        , "G"               , "D"                  , "Em"              , "Eb"              , "G"               , "Am7"             , "D7"              , "G"               , "Am7-D7"            , "G"               , "D"                  , "C"               , "Am7"                , "D"               , "Em"                 , "F"               , "Am7"             , "Am7-D-D7"        , "G"               , "D"               , "Em"              , "Eb"              , "G"               , "Am7"             , "D7"              , "G"               , "Am7-G7"          , "C"               , "D7-D7sus4-D7"                   , "C"               , "D7-D7sus4-D7"    , "Bm"              , "|Dm"                 , "|Cmaj7"          , "B7"              , "Em"              , "G7"                     , "C"               , "A7"             , "Am7"            , "D7"                      , "G"               , "D"                     , "C"               , "Am7"             , "D"               , "Em"              , "F"               , "Am7"             , "Am7-D-D7"        , "G"               , "D"                 , "Em"              , "Eb"              , "G"                , "Am7"             , "D7"              , "G"               , "G"               , "D"               , "C"               , "D7"              , "G"               , "D"               , "EmD7-D7sus4-D7"            , "G"               , "D"               , "Cmaj7"           , "D"               , "G"               , "D"               , "Cmaj7"           , "D"             ] ] ,  
+[ "HeAintHeavy-Place" , [ '0 - 562 - 212', '0 - 614 - 216', '0 - 660 - 216', '0 - 741 - 224', '0 - 328 - 276', '0 - 480 - 275', '0 - 755 - 274', '0 - 1028 - 276', '0 - 174 - 387', '0 - 372 - 399', '0 - 648 - 403', '0 - 1089 - 399', '341 - 32 - 197', '341 - 260 - 230', '341 - 379 - 245', '341 - 809 - 249', '341 - 1025 - 252', '341 - 43 - 351', '341 - 353 - 363', '341 - 500 - 362', '341 - 644 - 373', '341 - 819 - 370', '683 - 261 - 163', '683 - 386 - 156', '683 - 732 - 156', '683 - 983 - 157', '683 - 320 - 273', '683 - 441 - 277', '683 - 804 - 293', '683 - 915 - 281', '683 - 46 - 405', '683 - 187 - 448', '683 - 334 - 456', '683 - 696 - 460', '683 - 965 - 457', '1024 - 26 - 219', '1024 - 355 - 236', '1024 - 481 - 244', '1024 - 661 - 244', '1024 - 39 - 362', '1024 - 150 - 416', '1024 - 383 - 424', '1365 - 136 - 217', '1365 - 329 - 214', '1365 - 61 - 339', '1365 - 211 - 363', '1706 - 34 - 148', '1706 - 240 - 145', '1706 - 305 - 153', '1706 - 128 - 252', '1706 - 289 - 273', '1706 - 453 - 266', '1706 - 724 - 261', '1706 - 412 - 368', '1706 - 545 - 385', '1706 - 912 - 389', '1706 - 1163 - 391', '2048 - 135 - 181', '2048 - 634 - 190', '2048 - 922 - 188', '2048 - 213 - 276', '2048 - 474 - 278', '2048 - 692 - 275', '2048 - 1028 - 277', '2048 - 20 - 413', '2389 - 260 - 163', '2389 - 404 - 159', '2389 - 855 - 161', '2389 - 1070 - 157', '2389 - 114 - 286', '2389 - 384 - 270', '2389 - 563 - 299', '2389 - 809 - 294', '2389 - 20 - 441', '2389 - 98 - 438', '2389 - 186 - 447', '2389 - 356 - 452', '2690 - 209 - 204', '2690 - 421 - 206', '2690 - 523 - 212', '2690 - 1008 - 209', '2690 - 236 - 349', '2690 - 433 - 346', '2690 - 774 - 346', '2690 - 1002 - 338', '2763 - 260 - 427', '2763 - 352 - 424', '2763 - 587 - 432', '2763 - 926 - 415' ] ] ,
+[ "HeAintHeavy-Time"  , [ 2, 4, 7, 10, 14, 18, 20, 23, 25, 27, 30, 33, 36, 39, 44, 46, 48, 52, 55, 57, 58, 61, 64, 69, 71, 74, 76, 80, 83, 86, 88, 90, 93, 96, 99, 104, 106, 108, 109, 112, 115, 119, 122, 124, 127, 129, 130, 132, 132, 134, 137, 137, 138, 140, 144, 145, 158, 161, 164, 166, 169, 172, 177, 184, 189, 193, 193, 195, 197, 198, 199, 201, 204, 206, 223, 225, 226, 228, 235, 241, 243, 244, 250, 253, 254 ] ] , 
+[ "HeAintHeavy-Word"  , [ "Ha             " , "rm             " , "on             " , "ica-solo  The road is " , "long           " , "with many a    " , "winding turns  " , "     That      " , "leads us to    " , "mwho knows     " , "where, who knows w" , "here           " , "But I m st     " , "rong           " , " strong enough to " , "carry hi       " , "m              " , "He ain t heavy " , "               " , "he s my        " , "brother        " , "        So on we " , "go             " , "his welfare is of " , "my concern     " , "     No burden is " , "he to          " , "bear, we ll get th" , "ere            " , "               " , "For I          " , "know           " , " he would not e" , "ncumber        " , " me            " , "He ain t heavy," , "he s           " , " my b          " , "rother         " , "If I m l       " , "aden at all    " , "                        I m la" , "den with s     " , "adness         " , "tha            " , "t everyone s heart " , "Isn t f        " , "ill            " , "ed             " , "with the gladness Of l" , "ove            " , " for           " , "one anot       " , "her It s a long, long r" , "oad            " , " from which there is " , "no return      " , "    While w    " , "e re on the    " , "way to th      " , "ere, why not s " , "hare           " , "And the l      " , "oad            " , "Doesn t weigh me " , "down at        " , "all            " , "He ain t heavy, " , "he s           " , " my br         " , "other          " , "He             " , " s             " , " m             " , "y              " , "brother        " , "               " , "               He ain t h" , "eavy           " , "he s my        " , "brother        " , "   He ain t h  " , "eavy           " , "he s my        " , "brother        " , "             "  ] ] , 
 
-const cWord =  [ "You shake my"  ,"nerves and u" ,"man insane  "  ," Goodness gr","You came along","I changed my min","this love is fine","Goodness grace","Kiss me baby Oh","yo! It feels goo","Hold me baby"    ,"I want to love" ,"mine mine mine", "I chew my nails ","Im real nervous","Oh baby your dr ","crazy Goodness"];
+]);
+
+
+const aSong  = songsDetailList.get(selectSong + "-Chords");
+const bTime  = songsDetailList.get(selectSong + "-Time");
+const cWord  = songsDetailList.get(selectSong + "-Word");
+const dPlace = songsDetailList.get(selectSong + "-Place");
+
+console.log("BUILT:");
+console.log(aSong);
+console.log(bTime);
+console.log(cWord);
+console.log(dPlace);
 
 
 const ChordsNotes = new Map([
@@ -97,6 +117,60 @@ const ChordsNotes = new Map([
 [ "Am7b5" ,["A","C","D#","G",   "|","A","C","Eb","G",         "|",""   ] ] ,
 [ "Bbm7b5",["A#","C#","E","Gs", "|","Bb","Db","Fb(E)","Ab",   "|",""   ] ] ,
 [ "Bm7b5" ,["B","D","F","A",    "|","B","D","F","A",          "|",""   ] ]  
+
+]);
+
+const noteFlatSharp = new Map([
+
+[ "Note" , [ "Flat","Sharp" ] ] ,
+[ "Cb"   , [ "B" ,"C"  ] ] ,  
+[ "C"    , [ "B" ,"C#" ] ] ,  
+[ "C#"   , [ "C" ,"D"  ] ] ,
+[ "Db"   , [ "C#","D"  ] ] ,
+[ "D"    , [ "Eb","D#" ] ] ,
+[ "D#"   , [ "D" ,"E"  ] ] ,
+[ "Eb"   , [ "D#","E"  ] ] ,
+
+[ "E"    , [ "Db","F"  ] ] , 
+[ "Fb"   , [ "E" ,"F"  ] ] , 
+[ "F"    , [ "E" ,"F#" ] ] , 
+
+[ "F#"   , [ "F" ,"G"  ] ] ,
+[ "G"    , [ "Fb","G#" ] ] ,
+[ "G#"   , [ "G" ,"A"  ] ] ,
+[ "A"    , [ "Ab","A#" ] ] ,
+[ "A#"   , [ "A" ,"B"  ] ] ,
+[ "B"    , [ "Bb","C"  ] ] 
+
+]);
+
+const chordScales = new Map([
+
+["Quality-Chord" , ["", "n1" ,"n2" ,"n3" ,"n4" ,"n5" ,"n6" ,"n7" ,"n8" ,"9th" ,"10x" ,"11th" ,"12x" ,"13th" ,"14x" ,"15x" ]] ,
+["C"  , ["", "C" ,"D" ,"E" ,"F" ,"G" ,"A" ,"B" ,"C" ,"D" ,"E" ,"F" ,"G" ,"A" ,"B" ,"C" ]] ,
+["C#" , ["", "C#" ,"D#" ,"E#(F)" ,"F#" ,"G#" ,"A#" ,"B#" ,"C#" ,"D#" ,"E#(F)" ,"F#" ,"G#" ,"A#" ,"B#" ,"C#" ]] ,
+["D"  , ["", "D" ,"E" ,"F#" ,"G" ,"A" ,"B" ,"C#" ,"D" ,"E" ,"F#" ,"G" ,"A" ,"B" ,"C#" ,"D" ]] ,
+["D#" , ["", "D#" ,"E#(F)" ,"F##(G)" ,"G#" ,"A#" ,"B#(C)" ,"C##(D)" ,"D#" ,"E#(F)" ,"F##(G)" ,"G#" ,"A#" ,"B#(C)" ,"C##(D)" ,"D#" ]] ,
+["E"  , ["", "E" ,"F#" ,"G#" ,"A" ,"B" ,"C#" ,"D#" ,"E" ,"F#" ,"G#" ,"A" ,"B" ,"C#" ,"D#" ,"E" ]] ,
+["F"  , ["", "F" ,"G" ,"A" ,"Bb" ,"C" ,"D" ,"E" ,"F" ,"G" ,"A" ,"Bb" ,"C" ,"D" ,"E" ,"F" ]] ,
+["F#" , ["", "F#" ,"G#" ,"A#" ,"B" ,"C#" ,"D#" ,"E#" ,"F#" ,"G#" ,"A#" ,"B" ,"C#" ,"D#" ,"E#" ,"F#" ]] ,
+["G"  , ["", "G" ,"A" ,"B" ,"C" ,"D" ,"E" ,"F#" ,"G" ,"A" ,"B" ,"C" ,"D" ,"E" ,"F#" ,"G" ]] ,
+["G#" , ["", "G#" ,"A#" ,"B#" ,"C#" ,"D#" ,"E#" ,"F##(G)" ,"G#" ,"A#" ,"B#" ,"C#" ,"D#" ,"E#" ,"F##(G)" ,"G#" ]] ,
+["A"  , ["", "A" ,"B" ,"C#" ,"D" ,"E" ,"F#" ,"G#" ,"A" ,"B" ,"C#" ,"D" ,"E" ,"F#" ,"G#" ,"A" ]] ,
+["A#" , ["", "A#" ,"B#(C)" ,"C##(D)" ,"D#" ,"E#(F)" ,"F##(G)" ,"G##(A)" ,"A#" ,"B#(C)" ,"C##(D)" ,"D#" ,"E#(F)" ,"F##(G)" ,"G##(A)" ,"A#" ]] ,
+["B"  , ["", "B" ,"C#" ,"D#" ,"E" ,"F#" ,"G#" ,"A#" ,"B(Cb" ,"C#" ,"D#" ,"E" ,"F#" ,"G#" ,"A#" ,"B(Cb" ]] ,
+["Cm" , ["", "C" ,"D" ,"Eb" ,"F" ,"G" ,"Ab" ,"Bb" ,"C" ,"D" ,"Eb" ,"F" ,"G" ,"Ab" ,"Bb" ,"C" ]] ,
+["C#m", ["", "C#" ,"D#" ,"E" ,"F#" ,"G#" ,"A" ,"B" ,"C#" ,"D#" ,"E" ,"F#" ,"G#" ,"A" ,"B" ,"C#" ]] ,
+["Dm" , ["", "D" ,"E" ,"F" ,"G" ,"A" ,"Bb" ,"C" ,"D" ,"E" ,"F" ,"G" ,"A" ,"Bb" ,"C" ,"D" ]] ,
+["D#m", ["", "D#" ,"E#(F)" ,"F#" ,"G#" ,"A#" ,"B" ,"C#" ,"D#" ,"E#(F)" ,"F#" ,"G#" ,"A#" ,"B" ,"C#" ,"D#" ]] ,
+["Em" , ["", "E" ,"F#" ,"G" ,"A" ,"B" ,"C" ,"D" ,"E" ,"F#" ,"G" ,"A" ,"B" ,"C" ,"D" ,"E" ]] ,
+["Fm" , ["", "F" ,"G" ,"Ab" ,"Bb" ,"C" ,"Db" ,"Eb" ,"F" ,"G" ,"Ab" ,"Bb" ,"C" ,"Db" ,"Eb" ,"F" ]] ,
+["F#m", ["", "F#" ,"G#" ,"A" ,"B" ,"C#" ,"D" ,"E" ,"F#" ,"G#" ,"A" ,"B" ,"C#" ,"D" ,"E" ,"F#" ]] ,
+["Gm" , ["", "G" ,"A" ,"Bb" ,"C" ,"D" ,"Eb" ,"F" ,"G" ,"A" ,"Bb" ,"C" ,"D" ,"Eb" ,"F" ,"G" ]] ,
+["G#m", ["", "G#" ,"A#" ,"B" ,"C#" ,"D#" ,"E" ,"F#" ,"G#" ,"A#" ,"B" ,"C#" ,"D#" ,"E" ,"F#" ,"G#" ]] ,
+["Am" , ["", "A" ,"B" ,"C" ,"D" ,"E" ,"F" ,"G" ,"A" ,"B" ,"C" ,"D" ,"E" ,"F" ,"G" ,"A" ]] ,
+["A#m", ["", "A#" ,"B#" ,"C#" ,"D#" ,"E#(F)" ,"F#" ,"G#" ,"A#" ,"B#" ,"C#" ,"D#" ,"E#(F)" ,"F#" ,"G#" ,"A#" ]] ,
+["Bm" , ["", "B" ,"C#" ,"D" ,"E" ,"F#" ,"G" ,"A" ,"B" ,"C#" ,"D" ,"E" ,"F#" ,"G" ,"A" ,"B" ]] 
 
 ]);
 
